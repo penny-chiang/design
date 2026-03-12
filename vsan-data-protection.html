@@ -9,16 +9,16 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #F7F5F0;
-      --bg-warm: #EFECE5;
+      --bg: #F0F3F3;
+      --bg-warm: #E6EDEC;
       --bg-dark: #1A1814;
       --ink: #1A1814;
-      --ink-mid: #4A4640;
-      --ink-light: #8A8580;
+      --ink-mid: #3E4E4E;
+      --ink-light: #6A8A8A;
       --accent: #2A6496;
       --accent-light: #E8F0F8;
       --accent-mid: #4A90C4;
-      --border: #E0DDD6;
+      --border: #C8D8D8;
       --border-dark: #2E2C28;
       --white: #FFFFFF;
       --serif: 'DM Serif Display', serif;
@@ -35,16 +35,19 @@
       -webkit-font-smoothing: antialiased;
     }
 
+
+    /* ── PAGE WRAPPER ── */
+    .page-wrap { max-width: 1400px; margin: 0 auto; position: relative; box-shadow: 0 0 0 1px var(--border); }
     /* ── NAV ── */
     nav {
-      position: fixed;
+      position: sticky;
       top: 0; left: 0; right: 0;
       z-index: 100;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 20px 48px;
-      background: rgba(247,245,240,0.92);
+      background: rgba(240,243,243,0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
@@ -612,6 +615,7 @@
   </style>
 </head>
 <body>
+<div class="page-wrap">
 
   <!-- NAV -->
   <nav>
@@ -791,7 +795,7 @@
         <p class="cs-p">The most fundamental structural challenge was figuring out how to organize a feature that had two natural — and equally valid — entry points. Administrators needed to think at two levels simultaneously: <strong>the fleet level</strong> (defining policies across many VMs) and <strong>the individual VM level</strong> (understanding one machine's protection status). These weren't just two screens. They represented two different mental models, and the wrong choice would mean admins constantly getting lost trying to bridge them.</p>
 
         <div class="cs-img-placeholder" style="min-height: 260px;">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style="opacity:0.3"><rect x="4" y="4" width="40" height="40" rx="4" stroke="#8A8580" stroke-width="1.5"/><path d="M12 24h24M24 12v24" stroke="#8A8580" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style="opacity:0.3"><rect x="4" y="4" width="40" height="40" rx="4" stroke="#6A8A8A" stroke-width="1.5"/><path d="M12 24h24M24 12v24" stroke="#6A8A8A" stroke-width="1.5" stroke-linecap="round"/></svg>
           <div class="cs-img-placeholder-label">Screenshot placeholder</div>
           <div class="cs-img-placeholder-desc">Protection Groups list view — showing policy-first IA with VM assignment</div>
         </div>
@@ -880,7 +884,7 @@
         <p class="cs-p">Designing for hundreds of VMs meant the protection model needed to be declarative, not reactive. I designed <strong>vSAN Protection Groups</strong> as the core organizing unit — grouping VMs with similar protection requirements under a shared policy with automated snapshot creation and deletion. This shifted the mental model from "remember to take a snapshot" to "define what should be protected, and let the system handle it."</p>
 
         <div class="cs-img-placeholder" style="min-height: 240px;">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style="opacity:0.3"><rect x="4" y="4" width="40" height="40" rx="4" stroke="#8A8580" stroke-width="1.5"/><path d="M12 24h24M24 12v24" stroke="#8A8580" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style="opacity:0.3"><rect x="4" y="4" width="40" height="40" rx="4" stroke="#6A8A8A" stroke-width="1.5"/><path d="M12 24h24M24 12v24" stroke="#6A8A8A" stroke-width="1.5" stroke-linecap="round"/></svg>
           <div class="cs-img-placeholder-label">Screenshot placeholder</div>
           <div class="cs-img-placeholder-desc">vSAN Protection Group configuration — scheduling and retention policy UI</div>
         </div>
@@ -946,8 +950,4 @@
   <!-- FOOTER -->
   <footer>
     <p>© 2025 Penny Chiang</p>
-    <p><a href="mailto:pennychiang716@gmail.com">pennychiang716@gmail.com</a> · <a href="https://www.linkedin.com/in/peini-chiang/" target="_blank">LinkedIn</a></p>
-  </footer>
-
-</body>
-</html>
+    <p><a href="/cdn-cgi/l/email-protection#c7b7a2a9a9bea4afaea6a9a0f0f6f187a0aaa6aeabe9a4a8aa"><span class="__cf_email__" data-cfemail="a2d2c7ccccdbc1cacbc3ccc5959394e2c5cfc3cbce8cc1cdcf">[email
