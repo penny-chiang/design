@@ -9,16 +9,16 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #F0F3F3;
-      --bg-warm: #E6EDEC;
+      --bg: #F0F4F8;
+      --bg-warm: #DCE6F0;
       --bg-dark: #1A1814;
       --ink: #1A1814;
-      --ink-mid: #3E4E4E;
-      --ink-light: #6A8A8A;
+      --ink-mid: #1E2A38;
+      --ink-light: #607888;
       --accent: #2A6496;
       --accent-light: #E8F0F8;
       --accent-mid: #4A90C4;
-      --border: #C8D8D8;
+      --border: #C0CEDC;
       --border-dark: #2E2C28;
       --white: #FFFFFF;
       --serif: 'DM Serif Display', serif;
@@ -77,8 +77,8 @@
     /* ── HERO ── */
     .cs-hero {
       padding-top: 80px;
-      background: var(--bg-dark);
-      color: var(--white);
+      background: #D8E8F4;
+      color: var(--ink);
       display: grid;
       grid-template-columns: 1fr 1fr;
       min-height: 70vh;
@@ -95,7 +95,7 @@
       font-weight: 500;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--accent-mid);
+      color: #E07830;
       margin-bottom: 24px;
       display: flex;
       align-items: center;
@@ -105,14 +105,14 @@
       content: '';
       display: inline-block;
       width: 24px; height: 1px;
-      background: var(--accent-mid);
+      background: #E07830;
     }
     .cs-title {
       font-family: var(--serif);
       font-size: clamp(36px, 4vw, 56px);
       line-height: 1.05;
       letter-spacing: -0.02em;
-      color: var(--white);
+      color: var(--ink);
       margin-bottom: 28px;
     }
     .cs-title em { font-style: italic; color: var(--accent-mid); }
@@ -120,7 +120,7 @@
       font-size: 17px;
       font-weight: 300;
       line-height: 1.7;
-      color: rgba(255,255,255,0.6);
+      color: var(--ink-mid);
       max-width: 460px;
     }
     .cs-hero-right {
@@ -134,11 +134,11 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1px;
-      background: var(--border-dark);
-      border: 1px solid var(--border-dark);
+      background: var(--border);
+      border: 1px solid var(--border);
     }
     .cs-meta-item {
-      background: var(--bg-dark);
+      background: white;
       padding: 24px;
     }
     .cs-meta-label {
@@ -146,13 +146,13 @@
       font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
+      color: var(--ink-light);
       margin-bottom: 8px;
     }
     .cs-meta-value {
       font-size: 14px;
       font-weight: 400;
-      color: rgba(255,255,255,0.85);
+      color: var(--ink);
       line-height: 1.5;
     }
     .cs-meta-value strong {
@@ -160,7 +160,7 @@
       font-size: 28px;
       font-family: var(--serif);
       font-weight: 400;
-      color: var(--white);
+      color: var(--ink);
       line-height: 1.1;
       margin-bottom: 4px;
     }
@@ -519,20 +519,20 @@
       margin: 32px 0;
     }
     .cs-outcome {
-      background: var(--bg-dark);
+      background: white;
       padding: 32px;
     }
     .cs-outcome-num {
       font-family: var(--serif);
       font-size: 44px;
-      color: var(--white);
+      color: #E07830;
       line-height: 1;
       margin-bottom: 8px;
     }
     .cs-outcome-label {
       font-size: 13px;
       font-weight: 400;
-      color: rgba(255,255,255,0.5);
+      color: var(--ink-light);
       line-height: 1.4;
     }
 
@@ -571,7 +571,7 @@
       transition: background 0.2s, transform 0.2s;
       white-space: nowrap;
     }
-    .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+    .btn-primary:hover { background: #E07830; transform: translateY(-1px); }
 
     /* ── FOOTER ── */
     footer {
@@ -596,6 +596,61 @@
     .cs-meta-grid { animation: fadeUp 0.5s 0.15s ease both; }
 
     /* ── RESPONSIVE ── */
+
+    /* ── SIDE NAV ── */
+    .cs-sidenav {
+      position: fixed;
+      left: 32px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      z-index: 100;
+    }
+    .cs-sidenav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--ink-light);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 0;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .cs-sidenav-item::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--border);
+      transition: width 0.2s, background 0.2s;
+      flex-shrink: 0;
+    }
+    .cs-sidenav-item:hover,
+    .cs-sidenav-item.active {
+      color: #E07830;
+    }
+    .cs-sidenav-item:hover::before,
+    .cs-sidenav-item.active::before {
+      width: 32px;
+      background: #E07830;
+    }
+    .cs-sidenav-label {
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+    }
+    .cs-sidenav:hover .cs-sidenav-label,
+    .cs-sidenav-item.active .cs-sidenav-label {
+      opacity: 1;
+    }
+    @media (max-width: 1200px) { .cs-sidenav { display: none; } }
+
     @media (max-width: 900px) {
       nav { padding: 16px 24px; }
       .cs-hero { grid-template-columns: 1fr; }
@@ -617,18 +672,43 @@
 <body>
 <div class="page-wrap">
 
+
+  <!-- SIDE NAV -->
+  <nav class="cs-sidenav">
+    <a href="#s-background" class="cs-sidenav-item active">
+      <span class="cs-sidenav-label">Background</span>
+    </a>
+    <a href="#s-role" class="cs-sidenav-item">
+      <span class="cs-sidenav-label">My Role</span>
+    </a>
+    <a href="#s-challenges" class="cs-sidenav-item">
+      <span class="cs-sidenav-label">Design Challenges</span>
+    </a>
+    <a href="#s-outcomes" class="cs-sidenav-item">
+      <span class="cs-sidenav-label">Outcomes</span>
+    </a>
+  </nav>
+
   <!-- NAV -->
   <nav>
     <a href="index.html" class="nav-logo">
-      <div class="nav-logo-mark">
-        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-          <path d="M4 14 Q11 5 18 14" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.95"/>
-          <path d="M5.5 14 Q11 7 16.5 14" stroke="white" stroke-width="1.3" stroke-linecap="round" opacity="0.65"/>
-          <path d="M7 14 Q11 9 15 14" stroke="white" stroke-width="0.9" stroke-linecap="round" opacity="0.4"/>
-          <path d="M4 16.8 Q8 14.8 11 16.8 Q14 18.8 18 16.8" stroke="white" stroke-width="1.4" stroke-linecap="round" opacity="0.8"/>
-          <path d="M4.5 18.8 Q8 16.8 11 18.8 Q14 20.8 17.5 18.8" stroke="white" stroke-width="0.9" stroke-linecap="round" opacity="0.45"/>
-        </svg>
-      </div>
+      <div class="nav-logo-mark"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="logo-clip"><rect width="36" height="36" rx="6"/></clipPath>
+    <filter id="logo-rough" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" seed="12" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.45" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+  <rect width="36" height="36" rx="6" fill="#7EA0C0"/>
+  <g clip-path="url(#logo-clip)"><g filter="url(#logo-rough)">
+    <path d="M4 28 Q4.5 20 10 14 Q18 6 26 14 Q31.5 20 32 28" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M7 28 Q7.5 22 12 17 Q18 11 24 17 Q28.5 22 29 28" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M10.5 28 Q11 23.5 14.5 20 Q18 16.5 21.5 20 Q25 23.5 25.5 28" fill="none" stroke="white" stroke-width="1.4" stroke-linecap="round"/>
+    <path d="M5 31 C7.5 28.5 9.5 32 12 30 C14.5 28 16 31 18 29.5" fill="none" stroke="#607888" stroke-width="2" stroke-linecap="round"/>
+    <path d="M19.5 33 C22 30.5 24 34 26.5 32 C28.5 30.5 30 33 32 31.5" fill="none" stroke="#607888" stroke-width="1.7" stroke-linecap="round"/>
+  </g></g>
+</svg></div>
       <span class="nav-logo-name">Penny Chiang</span>
     </a>
     <a href="index.html" class="nav-back">← Back to Work</a>
@@ -638,8 +718,8 @@
   <header class="cs-hero">
     <div class="cs-hero-left">
       <p class="cs-eyebrow">VMware · vSphere 8.0u3 → 9.0 → 9.1</p>
-      <h1 class="cs-title">From Zero to<br/>Enterprise-Grade:<br/><em>Building VM Protection<br/>at Scale</em></h1>
-      <p class="cs-subtitle">Designing vSAN Data Protection from scratch — a 2+ year journey spanning snapshot management, cross-datacenter replication, and a global monitoring dashboard for IT admins who can't afford to get it wrong.</p>
+      <h1 class="cs-title">From Zero to<br/>Enterprise-Grade:<br/><em>Building Workload Protection<br/>at Scale</em></h1>
+      <p class="cs-subtitle">Designing vSAN Data Protection from scratch — a 3+ year journey spanning snapshot management, cross-datacenter replication, and a global monitoring dashboard for IT admins who can't afford to get it wrong.</p>
     </div>
     <div class="cs-hero-right">
       <div class="cs-meta-grid">
@@ -649,23 +729,23 @@
         </div>
         <div class="cs-meta-item">
           <div class="cs-meta-label">Timeline</div>
-          <div class="cs-meta-value"><strong>2+</strong>years across 3 releases</div>
+          <div class="cs-meta-value"><strong>3+</strong> years across 3 releases</div>
         </div>
         <div class="cs-meta-item">
           <div class="cs-meta-label">Team</div>
-          <div class="cs-meta-value">PM, Engineering Architects, Field Engineers</div>
+          <div class="cs-meta-value">PM, Engineering Architects, UI Engineers, Field Engineers</div>
         </div>
         <div class="cs-meta-item">
           <div class="cs-meta-label">Research</div>
-          <div class="cs-meta-value"><strong>70+</strong>unmoderated test responses</div>
+          <div class="cs-meta-value">Moderated usability sessions, unmoderated tests (70+ responses), demo feedback</div>
         </div>
         <div class="cs-meta-item">
           <div class="cs-meta-label">Platform</div>
-          <div class="cs-meta-value">vSphere Client (enterprise web app)</div>
+          <div class="cs-meta-value">vSphere Client · VMware Cloud Foundation Operations</div>
         </div>
         <div class="cs-meta-item">
           <div class="cs-meta-label">Users</div>
-          <div class="cs-meta-value">Infrastructure Admins managing 100s of VMs</div>
+          <div class="cs-meta-value">Infrastructure Admins managing hundreds of workloads</div>
         </div>
       </div>
     </div>
@@ -673,38 +753,52 @@
 
   <main class="cs-body">
 
+    <!-- HERO IMAGE -->
+    <div style="padding: 0 48px; margin-bottom: -1px;">
+      <div style="border: 1px solid var(--border); border-top: none; overflow: hidden; line-height: 0;">
+        <img src="vsan-hero.png" alt="vSAN Data Protection — cluster summary dashboard" style="width: 100%; display: block;"/>
+      </div>
+    </div>
+
     <!-- 01 BACKGROUND -->
-    <section class="cs-section">
+    <section class="cs-section" id="s-background">
       <div class="cs-section-nav">
         <div class="cs-section-label">Section 01</div>
         <div class="cs-section-num">01</div>
       </div>
       <div class="cs-section-content">
         <h2 class="cs-h2">Background & Problem</h2>
-        <p class="cs-p">VM snapshots have long been a double-edged sword for enterprise IT administrators. While vSphere's existing snapshot feature offered point-in-time VM protection, it came with serious technical limitations that made it unreliable for long-term data protection at scale.</p>
+        <p class="cs-p">Businesses run on data — and losing it can mean lost revenue, regulatory penalties, or worse. Enterprises running on VMware's infrastructure platform organize their operations inside <strong>virtual machines (VMs)</strong> — software-defined environments used to run applications or store business data. Protecting those VMs meant relying on a backup mechanism called snapshots: essentially a "save point" that captures the state of a running system so it can be restored if something goes wrong.</p>
 
-        <h3 class="cs-h3">The problem with traditional snapshots</h3>
-        <p class="cs-p">The core issue was architectural: when a snapshot is taken, the existing virtual disk is made read-only and all subsequent writes redirect to a new delta disk. The longer a snapshot chain exists, the more performance degrades — with VMware itself recommending no more than 2–3 snapshots, retained for no more than 72 hours. In practice, admins reported VMs becoming completely unresponsive during snapshot consolidation.</p>
+        <p class="cs-p">The problem was that the existing snapshot tool was designed for short-term, occasional use — not as a serious data protection strategy. IT administrators knew it was unreliable but had no better option built into the platform they were already running.</p>
+
+        <h3 class="cs-h3">Why the existing tool kept failing people</h3>
+        <p class="cs-p">Each time a save point was created, the system had to track every change made since — and the longer that list grew, the slower everything got. VMware's own guidance was to keep no more than 2–3 save points at a time, for no longer than 72 hours. In practice, admins told us their systems would grind to a halt just trying to clean them up. The tool meant to protect their data was itself becoming a risk.</p>
+
+        <figure style="margin: 28px 0;">
+          <img src="existing-snapshot-tree.png" alt="The existing snapshot manager showing a deeply nested chain of identical entries — a visual representation of how quickly the tool became unmanageable" style="width: 100%; border: 1px solid var(--border); border-radius: 4px; display: block;"/>
+          <figcaption style="margin-top: 10px; font-size: 13px; color: var(--ink-light); font-style: italic; line-height: 1.5;">The existing snapshot manager — a deeply nested chain of identical entries, each carrying a warning not to delete it. This is what "managed" data protection looked like in practice.</figcaption>
+        </figure>
 
         <div class="cs-quote">
           <p class="cs-quote-text">"I hate to say it like this, but people forget about snapshots. It causes performance-related issues and all that. So we never used snapshots."</p>
           <p class="cs-quote-attr">— Infrastructure Administrator, user research session</p>
         </div>
 
-        <p class="cs-p">Managing snapshots was also an operational burden: no centralized way to track, schedule, or enforce retention policies across many VMs, leaving administrators to handle this manually — or, as we discovered, not at all.</p>
+        <p class="cs-p">On top of the performance problems, there was no central place to manage protection across an organization's systems — no scheduling, no automated cleanup, no visibility into what was protected and what wasn't. Admins were doing it by hand, or not doing it at all.</p>
 
-        <h3 class="cs-h3">Why vSAN ESA changed everything</h3>
-        <p class="cs-p">The release of vSAN Express Storage Architecture (ESA) introduced a fundamentally different approach. Rather than redirecting writes to a new object, ESA handles snapshots at the metadata level using a B-Tree structure — making the mechanism significantly more efficient. Independent testing showed <strong>less than 2% performance impact</strong> between a VM with no snapshots and a VM with multiple, and snapshot consolidation became up to <strong>100× faster</strong>.</p>
+        <h3 class="cs-h3">A new foundation made something better possible</h3>
+        <p class="cs-p">VMware's next-generation storage architecture (vSAN ESA) solved the underlying technical problem — redesigning how save points were stored so they no longer degraded performance. Independent testing showed <strong>less than 2% performance impact</strong> regardless of how many save points existed, and cleanup became up to <strong>100× faster</strong>. The constraint that had made serious data protection impossible was gone.</p>
 
         <div class="cs-callout">
           <div class="cs-callout-label">The Opportunity</div>
-          <p class="cs-callout-text">With the performance limitations solved at the storage layer, it was now possible to build a first-class data protection experience directly inside vSAN — one that would give IT administrators centralized, scalable control over VM protection policies, encourage broader adoption of vSAN ESA, and create a new avenue for storage consumption and revenue.</p>
+          <p class="cs-callout-text">With the performance problem solved at the infrastructure level, there was now a real opportunity to build a first-class data protection experience — one that gave IT teams centralized, scalable control over how their critical systems were protected, without the risk and manual overhead they'd learned to live with. This was the product I was brought in to design from scratch.</p>
         </div>
       </div>
     </section>
 
     <!-- 02 ROLE -->
-    <section class="cs-section">
+    <section class="cs-section" id="s-role">
       <div class="cs-section-nav">
         <div class="cs-section-label">Section 02</div>
         <div class="cs-section-num">02</div>
@@ -712,6 +806,49 @@
       <div class="cs-section-content">
         <h2 class="cs-h2">My Role & Approach</h2>
         <p class="cs-p">I was the sole product designer on vSAN Data Protection for over two years, embedded in a cross-functional team with a product manager and engineering architects. I owned the end-to-end design process — from early concept exploration and information architecture through detailed interaction design, usability testing, and iterative refinement across three release cycles.</p>
+
+        <h3 class="cs-h3">What this work actually required</h3>
+        <p class="cs-p">Enterprise product design at this level isn't primarily about interface craft — it's about accessing information that hasn't been written down yet. The most important inputs to this project didn't live in a ticket or a spec. They lived in the tension between two teams with competing priorities, in the workaround an admin had quietly built into their Monday routine, in the strategic direction still forming in a VP's head.</p>
+        <p class="cs-p">My role was relational as much as it was design. I was a node in a human network — connecting engineering architects who rarely talked to the people running their software, surfacing the organizational dynamics that shaped what was technically feasible, and sitting with users long enough to create the conditions for them to say the things they hadn't said yet. That last part — the unknown unknowns — is where the real design problems live.</p>
+
+        <div style="margin: 32px 0; display: flex; justify-content: center;">
+          <svg width="100%" viewBox="0 0 680 380" style="max-width: 480px;" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="ha-r1">
+                <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="4" seed="7" result="n"/>
+                <feDisplacementMap in="SourceGraphic" in2="n" scale="1.8" xChannelSelector="R" yChannelSelector="G"/>
+              </filter>
+              <filter id="ha-r2">
+                <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="3" seed="3" result="n"/>
+                <feDisplacementMap in="SourceGraphic" in2="n" scale="1.2" xChannelSelector="R" yChannelSelector="G"/>
+              </filter>
+            </defs>
+            <rect x="140" y="10" width="400" height="360" rx="12" fill="#C8DDE0"/>
+            <g filter="url(#ha-r1)">
+              <line x1="330" y1="192" x2="240" y2="142" stroke="#1A2424" stroke-width="4" stroke-linecap="round"/>
+              <line x1="350" y1="192" x2="440" y2="142" stroke="#1A2424" stroke-width="4" stroke-linecap="round"/>
+              <line x1="340" y1="212" x2="340" y2="298" stroke="#1A2424" stroke-width="4" stroke-linecap="round"/>
+            </g>
+            <g filter="url(#ha-r2)">
+              <circle cx="340" cy="200" r="22" fill="white" stroke="#1A2424" stroke-width="3"/>
+              <path d="M 332 220 C 332 228 348 228 348 220" fill="none" stroke="#1A2424" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="333" cy="197" r="2.5" fill="#1A2424"/>
+              <circle cx="347" cy="197" r="2.5" fill="#1A2424"/>
+              <path d="M 333 206 Q 340 211 347 206" fill="none" stroke="#1A2424" stroke-width="2" stroke-linecap="round"/>
+              <path d="M 320 196 C 318 184 322 174 332 170 C 340 167 350 168 356 174 C 362 180 362 190 360 196" fill="none" stroke="#1A2424" stroke-width="2.8" stroke-linecap="round"/>
+            </g>
+            <g filter="url(#ha-r1)">
+              <circle cx="232" cy="134" r="8" fill="white" stroke="#1A2424" stroke-width="2.5"/>
+              <circle cx="448" cy="134" r="8" fill="white" stroke="#1A2424" stroke-width="2.5"/>
+              <circle cx="340" cy="306" r="8" fill="white" stroke="#1A2424" stroke-width="2.5"/>
+            </g>
+          </svg>
+        </div>
+
+        <div class="cs-callout" style="border-left-color: var(--accent);">
+          <div class="cs-callout-label">A note on process</div>
+          <p class="cs-callout-text">Much of what I navigated on this project — the unspoken team tensions, the user behaviors that never made it into a bug report, the strategic pivots still in flux — can't be mined from a dataset. It surfaces through trust, presence, and relationships built over time. That's the work underneath the work.</p>
+        </div>
 
         <h3 class="cs-h3">How I gathered user insight</h3>
         <p class="cs-p">Rather than relying solely on PM-filtered requirements, I pursued direct user insight through multiple channels: <strong>formal usability test sessions</strong>, customer feedback sessions at industry stands where I could observe real reactions to screens, and regular conversations with <strong>field engineers</strong> who worked with IT admins daily and understood the gap between what the product offered and what users actually needed.</p>
@@ -753,7 +890,7 @@
     </section>
 
     <!-- 03 DESIGN CHALLENGES -->
-    <section class="cs-section">
+    <section class="cs-section" id="s-challenges">
       <div class="cs-section-nav">
         <div class="cs-section-label">Section 03</div>
         <div class="cs-section-num">03</div>
@@ -795,7 +932,7 @@
         <p class="cs-p">The most fundamental structural challenge was figuring out how to organize a feature that had two natural — and equally valid — entry points. Administrators needed to think at two levels simultaneously: <strong>the fleet level</strong> (defining policies across many VMs) and <strong>the individual VM level</strong> (understanding one machine's protection status). These weren't just two screens. They represented two different mental models, and the wrong choice would mean admins constantly getting lost trying to bridge them.</p>
 
         <div class="cs-img-placeholder" style="min-height: 260px;">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style="opacity:0.3"><rect x="4" y="4" width="40" height="40" rx="4" stroke="#6A8A8A" stroke-width="1.5"/><path d="M12 24h24M24 12v24" stroke="#6A8A8A" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style="opacity:0.3"><rect x="4" y="4" width="40" height="40" rx="4" stroke="#607888" stroke-width="1.5"/><path d="M12 24h24M24 12v24" stroke="#607888" stroke-width="1.5" stroke-linecap="round"/></svg>
           <div class="cs-img-placeholder-label">Screenshot placeholder</div>
           <div class="cs-img-placeholder-desc">Protection Groups list view — showing policy-first IA with VM assignment</div>
         </div>
@@ -884,7 +1021,7 @@
         <p class="cs-p">Designing for hundreds of VMs meant the protection model needed to be declarative, not reactive. I designed <strong>vSAN Protection Groups</strong> as the core organizing unit — grouping VMs with similar protection requirements under a shared policy with automated snapshot creation and deletion. This shifted the mental model from "remember to take a snapshot" to "define what should be protected, and let the system handle it."</p>
 
         <div class="cs-img-placeholder" style="min-height: 240px;">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style="opacity:0.3"><rect x="4" y="4" width="40" height="40" rx="4" stroke="#6A8A8A" stroke-width="1.5"/><path d="M12 24h24M24 12v24" stroke="#6A8A8A" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style="opacity:0.3"><rect x="4" y="4" width="40" height="40" rx="4" stroke="#607888" stroke-width="1.5"/><path d="M12 24h24M24 12v24" stroke="#607888" stroke-width="1.5" stroke-linecap="round"/></svg>
           <div class="cs-img-placeholder-label">Screenshot placeholder</div>
           <div class="cs-img-placeholder-desc">vSAN Protection Group configuration — scheduling and retention policy UI</div>
         </div>
@@ -900,7 +1037,7 @@
     </section>
 
     <!-- 04 OUTCOMES -->
-    <section class="cs-section">
+    <section class="cs-section" id="s-outcomes">
       <div class="cs-section-nav">
         <div class="cs-section-label">Section 04</div>
         <div class="cs-section-num">04</div>
